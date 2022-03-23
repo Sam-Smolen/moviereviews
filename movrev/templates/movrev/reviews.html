@@ -1,21 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
 {% block content %}
 <h2>Reviews</h2>
 <ul>
-<table class='table'></table>
-<tr>
-    <th>ReviewDate</th>
-    <th>Review</th>
-</tr>
-{% for r in review_list %}
-<tr>
-    <td>{{ r.reviewdate }}</td>
-       <td>{{ r.review }}</td>
-</tr>
-
-{% endfor %}
-
-</table>
+   {% for r in review_list %}
+     <li><a href="{% url 'reviewdetails' id=r.id %}"> {{ r.movieid_id }}</a></li>
+   {% endfor %}
 </ul>
 
 {% endblock %}

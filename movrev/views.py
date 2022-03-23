@@ -17,3 +17,7 @@ def movies(request):
 def moviedetails(request, id):
     movie=get_object_or_404(Movie, pk=id)
     return render(request, 'movrev/moviedetails.html' ,{'movie': movie})
+
+def reviewdetails(request, id):
+    review=get_object_or_404(Review, pk=id)
+    return render(request, 'movrev/reviewdetails.html' ,{'review': review})
