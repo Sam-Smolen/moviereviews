@@ -3,5 +3,10 @@ from .models import Movie, Review
 
 class MovieForm(forms.ModelForm):
     class Meta:
-        model=Product
+        model=Movie
+        fields='__all__'
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model=Review
         fields='__all__'
