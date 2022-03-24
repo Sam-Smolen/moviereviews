@@ -1,6 +1,8 @@
 from django.test import TestCase
 from .models import Movie, Review
 import datetime
+from .forms import MovieForm, ReviewForm
+from django.urls import reverse_lazy, reverse
 
 # Create your tests here.
 class MovieTest(TestCase):
@@ -42,3 +44,12 @@ class ReviewTest(TestCase):
     def test_movieid(self):
         review=self.setup()
         self.assertEqual(str(review.movieid_id), '1')
+
+class New_Movie_Authentification_Test(TestCase):
+    def setup(self):
+        self.test_user=User.objects.create_user(username='testuser1', password='p@ssw0rd1')
+        self.movie=Movie.objects.create(movietitle='Ace Ventura Pet Detective',movreleasedate='1994/02/04',movgenre='Comedy/Mystery')
+
+    def test_redirect_if_not_logged_in(self):
+        response=self.client.get(reverse('newmovie'))
+        self.assertRedirects(response, '/accounts/login/?next=/movrev/newmovie/')
