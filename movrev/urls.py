@@ -8,5 +8,7 @@ urlpatterns = [
     path('moviedetails/<int:id>', views.moviedetails, name='moviedetails'),
     path('reviewdetails/<int:id>', views.reviewdetails, name='reviewdetails'),
     path('newmovie/', views.newMovie, name='newmovie'),
-    path('newreview/', views.newReview, name='newreview'),   
+    path('newreview/', views.newReview, name='newreview'),
+    path('loginmessage/', views.loginmessage, name='loginmessage'),
+    path('logoutmessage/', views.logoutmessage, name='logoutmessage'),   
 ]

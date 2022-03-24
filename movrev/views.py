@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Movie, Review
 from .forms import MovieForm, ReviewForm
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -22,7 +23,7 @@ def moviedetails(request, id):
 def reviewdetails(request, id):
     review=get_object_or_404(Review, pk=id)
     return render(request, 'movrev/reviewdetails.html' ,{'review': review})
-#@login_required
+@login_required
 def newMovie(request):
     form=MovieForm
 
@@ -48,3 +49,9 @@ def newReview(request):
     else:
         form=ReviewForm()
     return render(request, 'movrev/newreview.html', {'form': form})
+
+def loginmessage(request):
+    return render(request, 'movrev/loginmessage.html')
+
+def logoutmessage(request):
+    return render(request, 'movrev/logoutmessage.html')
